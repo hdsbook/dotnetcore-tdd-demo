@@ -9,26 +9,41 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Traveler.Tests
     [TestFixture()]
     public class TravelerTests
     {
-        [Test()]
-        public void TravelByBusTest()
+        public void StrategyTest()
         {
-            var goStrategy = new GoByBus();
+            // given
+            var goby = "bus";
+            IGotStrategy goStrategy = null;
+            switch (goby)
+            {
+                case "bus":
+                    goStrategy = new GoByBus();
+                    break;
+                case "train":
+                default:
+                    goStrategy = new GoByTrain();
+                    break;
+            }
             var traveler = new Traveler("小明", goStrategy);
 
+            // when
             var result = traveler.Travel("台北");
 
+            // then
             Assert.AreEqual("小明搭巴士去台北", result);
         }
 
-        [Test()]
-        public void TravelByTrainTest()
+        public void WithoutStrategyTest()
         {
-            var goStrategy = new GoByTrain();
-            var traveler = new Traveler("小明", goStrategy);
+            // given
+            var goby = "bus";
+            var traveler = new RawTraveler("小明");
 
-            var result = traveler.Travel("台北");
+            // when
+            var result = traveler.Travel("台北", goby);
 
-            Assert.AreEqual("小明搭火車去台北", result);
+            // then
+            Assert.AreEqual("小明搭巴士去台北", result);
         }
     }
 }

@@ -26,12 +26,10 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Reporter.Tests
             var exportStrategy = new ExcelExportStrategy();
             var reporter = new Reporter(_data, exportStrategy);
 
-            // Act
-            var expected = $"{_fileName}.excel";
             var actual = reporter.Export(_fileName);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual($"{_fileName}.excel", actual);
         }
 
         [Test()]
@@ -42,11 +40,10 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Reporter.Tests
             var reporter = new Reporter(_data, exportStrategy);
 
             // Act
-            var expected = $"{_fileName}.pdf";
             var actual = reporter.Export(_fileName);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual($"{_fileName}.pdf", actual);
         }
     }
 }

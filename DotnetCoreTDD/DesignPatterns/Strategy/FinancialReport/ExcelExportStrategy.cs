@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotnetCoreTDD.DesignPatterns.Strategy.Reporter
+namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport
 {
     public class ExcelExportStrategy: IExportStrategy
     {

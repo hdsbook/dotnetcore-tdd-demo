@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DotnetCoreTDD.DesignPatterns.Strategy.Traveler
 {
+    /// <summary>
+    /// Traveler without using strategy
+    /// </summary>
     public class RawTraveler
     {
         private string _name;

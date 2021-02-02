@@ -24,8 +24,8 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport.Tests
             var exportType = "pdf";
 
             // when export
-            var reporter = new RawFinancialReport();
-            var fileName = reporter.Export("財務報表", exportType, _data);
+            var reportObj = new RawFinancialReport();
+            var fileName = reportObj.Export("財務報表", exportType, _data);
 
             Assert.AreEqual("財務報表.pdf", fileName);
         }
@@ -48,8 +48,8 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport.Tests
                     exportStrategy = new ExcelExportStrategy();
                     break;
             }
-            var reporter = new FinancialReport();
-            var fileName = reporter.Export("財務報表", exportStrategy, _data);
+            var reportObj = new FinancialReport();
+            var fileName = reportObj.Export("財務報表", exportStrategy, _data);
 
             Assert.AreEqual("財務報表.excel", fileName);
         }
@@ -62,8 +62,8 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport.Tests
 
             // when export
             var exportStrategy = _GetExportStrategy(exportType);
-            var reporter = new FinancialReport();
-            var fileName = reporter.Export("財務報表", exportStrategy, _data);
+            var reportObj = new FinancialReport();
+            var fileName = reportObj.Export("財務報表", exportStrategy, _data);
 
             Assert.AreEqual("excel", _GetFileExt(fileName));
         }

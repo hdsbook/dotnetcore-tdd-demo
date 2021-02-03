@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport
+namespace DotnetCoreTDD.DesignPatterns.Strategy.Report
 {
     /// <summary>
     /// Reporter without using Strategy
@@ -10,20 +10,20 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.FinancialReport
     public class RawFinancialReport
     {
 
-        public string Export(string fileName, string exportType, object data)
+        public string Export(string fileName, string exportType)
         {
             IExportStrategy exportStrategy = null;
             switch (exportType)
             {
                 case "excel":
-                    exportStrategy = new ExcelExportStrategy();
+                    exportStrategy = new ExcelExporter();
                     break;
                 case "pdf":
                 default:
-                    exportStrategy = new PDFExportStrategy();
+                    exportStrategy = new PDFExporter();
                     break;
             }
-            return exportStrategy.Export(fileName, data);
+            return exportStrategy.Export(fileName);
         }
     }
 }

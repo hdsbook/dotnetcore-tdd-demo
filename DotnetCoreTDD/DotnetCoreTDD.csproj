@@ -9,5 +9,6 @@
     <Folder Include="DesignPatterns\Bridge\Report\" />
     <Folder Include="DesignPatterns\Bridge\Report\Implementors\" />
     <Folder Include="DesignPatterns\Bridge\Report\Abstractions\" />
+    <Folder Include="DesignPatterns\Facade\" />
   </ItemGroup>
 </Project>

@@ -22,5 +22,7 @@
   <ItemGroup>
     <Folder Include="DesignPatterns\Bridge\" />
     <Folder Include="DesignPatterns\Facade\" />
+    <Folder Include="DesignPatterns\Adapter\" />
+    <Folder Include="DesignPatterns\Adapter\Exporter\" />
   </ItemGroup>
 </Project>

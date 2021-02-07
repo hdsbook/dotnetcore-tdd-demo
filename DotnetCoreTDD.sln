@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreTDD", "DotnetCoreTDD\DotnetCoreTDD.csproj", "{211A06FC-72CD-4FF4-9F87-2F35C0E8377D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetCoreTDD", "DotnetCoreTDD\DotnetCoreTDD.csproj", "{211A06FC-72CD-4FF4-9F87-2F35C0E8377D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetCoreTDDTests", "DotnetCoreTDDTests\DotnetCoreTDDTests.csproj", "{6110B9E4-0300-4F5A-AE93-A5F31872C78D}"
 EndProject

@@ -1,5 +1,5 @@
-﻿- EmailFacade: 用來簡化系統中某個子系統的使用方式
-- SubSystem\: 子系統物件集
+﻿- EmailFacade: 用來簡化子系統(寄信功能)的使用方式
+- SubSystem\: 子系統(寄信功能)會用到的物件集
     - User: 使用者物件，取得使用者信箱
     - News: 最新消息物件，取得最新消息通知
     - EmailSender: 寄信物件

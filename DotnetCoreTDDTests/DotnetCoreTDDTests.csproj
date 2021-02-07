@@ -21,5 +21,6 @@
 
   <ItemGroup>
     <Folder Include="DesignPatterns\Bridge\" />
+    <Folder Include="DesignPatterns\Facade\" />
   </ItemGroup>
 </Project>

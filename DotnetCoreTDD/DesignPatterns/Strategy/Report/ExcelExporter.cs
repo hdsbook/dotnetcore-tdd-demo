@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DotnetCoreTDD.DesignPatterns.Strategy.Report
+﻿namespace DotnetCoreTDD.DesignPatterns.Strategy.Report
 {
+    /// <summary>
+    /// Excel 匯出器
+    /// </summary>
     public class ExcelExporter: IExportStrategy
     {
         public string Export(string fileName)

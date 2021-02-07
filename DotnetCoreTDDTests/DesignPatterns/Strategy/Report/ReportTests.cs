@@ -11,7 +11,7 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
     {
         private object _data;
 
-        [SetUp]
+        [SetUp()]
         public void Init()
         {
             _data = new List<string>();
@@ -30,7 +30,7 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
             Assert.AreEqual("午餐清單.pdf", fileName);
         }
 
-        [Test]
+        [Test()]
         public void ExportExcelTest()
         {
             IExportStrategy exporter = new ExcelExporter();
@@ -40,7 +40,7 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
             Assert.AreEqual("午餐清單.excel", result);
         }
 
-        [Test]
+        [Test()]
         public void GivenExportTypeTest()
         {
             // given
@@ -65,7 +65,7 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
         }
 
         [Test()]
-        public void ExportStrategyTest2()
+        public void ExportStrategyWithFactoryTest()
         {
             // given
             var exportType = "excel";
@@ -78,6 +78,9 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
             Assert.AreEqual("excel", _GetFileExt(fileName));
         }
 
+        /// <summary>
+        /// 取得匯出策略的工廠物件
+        /// </summary>
         public class ExportManageTool
         {
             public static IExportStrategy GetExporter(string exportType)
@@ -93,7 +96,11 @@ namespace DotnetCoreTDD.DesignPatterns.Strategy.Report.Tests
             }
         }
 
-
+        /// <summary>
+        /// 取得副檔名
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         private string _GetFileExt(string fileName)
         {
             return System.IO.Path.GetExtension(fileName).TrimStart('.').ToLower();

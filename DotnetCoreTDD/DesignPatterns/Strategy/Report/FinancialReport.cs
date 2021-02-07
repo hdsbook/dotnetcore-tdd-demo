@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DotnetCoreTDD.DesignPatterns.Strategy.Report
+﻿namespace DotnetCoreTDD.DesignPatterns.Strategy.Report
 {
+    /// <summary>
+    /// 財金報表
+    /// </summary>
     public class FinancialReport
     {
         IExportStrategy _exportStrategy;

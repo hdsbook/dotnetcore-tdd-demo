@@ -7,4 +7,14 @@
     {
         public string Export();
     }
+
+    public class MyClass
+    {
+        private string Attribute1;
+
+        public void Operation1()
+        {
+            // ...
+        }
+    }
 }

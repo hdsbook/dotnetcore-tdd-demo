@@ -12,8 +12,5 @@
     <Folder Include="DesignPatterns\Facade\" />
     <Folder Include="DesignPatterns\Facade\Email\" />
     <Folder Include="DesignPatterns\Facade\Email\SubSystem\" />
-    <Folder Include="DesignPatterns\Adapter\" />
-    <Folder Include="DesignPatterns\Adapter\Exporter\" />
-    <Folder Include="DesignPatterns\Adapter\Exporter\Plugins\" />
   </ItemGroup>
 </Project>

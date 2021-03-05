@@ -24,8 +24,13 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
         [Test()]
         public void FacadeTest()
         {
-            var actual = (new EmailFacade()).SendNewsNotifyEmail(_account);
+            // given facade
+            var facade = new EmailFacade();
 
+            // when send email
+            var actual = facade.SendNewsNotifyEmail(_account);
+
+            // then assert
             Assert.AreEqual(_expected.Content, actual.Content);
             Assert.AreEqual(_expected.Email, actual.Email);
             Assert.AreEqual(_expected, actual);
@@ -34,10 +39,17 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
         [Test()]
         public void WithoutFacadeTest()
         {
-            var email = (new User()).GetUserEmail(_account);
-            var content = (new News()).GetNewsNotifyContent();
-            var actual = (new EmailSender()).SendEmail(email, content);
+            // given objects
+            var userObj = new User();
+            var newsObj = new News();
+            var senderObj = new EmailSender();
 
+            // when send email
+            var email = userObj.GetUserEmail(_account);
+            var content = newsObj.GetNewsNotifyContent();
+            var actual = senderObj.SendEmail(email, content);
+
+            // then assert
             Assert.AreEqual(_expected.Content, actual.Content);
             Assert.AreEqual(_expected.Email, actual.Email);
             Assert.AreEqual(_expected, actual);

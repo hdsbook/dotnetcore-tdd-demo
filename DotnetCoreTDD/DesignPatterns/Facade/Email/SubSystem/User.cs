@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace DotnetCoreTDD.DesignPatterns.Facade.Email.SubSystem
 {
     public class User
     {
-        public string GetUserEmail(string account)
+        public List<string> GetSubscribedUserEmails()
         {
-            return $"{account}@gmail.com";
+            return new List<string> { "hander@gmail.com" };
         }
     }
 }

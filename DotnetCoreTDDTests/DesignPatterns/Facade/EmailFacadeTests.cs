@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using DotnetCoreTDD.DesignPatterns.Facade.Email;
 using DotnetCoreTDD.DesignPatterns.Facade.Email.SubSystem;
 
@@ -13,10 +14,9 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
         [SetUp()]
         public void Init()
         {
-            _account = "hander";
             _expected = new EmailModel
             {
-                Email = $"{_account}@gmail.com",
+                Emails = new List<string>() {"hander@gmail.com"},
                 Content = "最新消息通知",
             };
         }
@@ -28,11 +28,11 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
             var facade = new EmailFacade();
 
             // when send email
-            var actual = facade.SendNewsNotifyEmail(_account);
+            var actual = facade.SendNewsNotifyEmail();
 
             // then assert
-            Assert.AreEqual(_expected.Content, actual.Content);
-            Assert.AreEqual(_expected.Email, actual.Email);
+            StringAssert.Contains(_expected.Content, actual.Content);
+            Assert.AreEqual(_expected.Emails, actual.Emails);
             Assert.AreEqual(_expected, actual);
         }
 
@@ -45,13 +45,13 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
             var senderObj = new EmailSender();
 
             // when send email
-            var email = userObj.GetUserEmail(_account);
-            var content = newsObj.GetNewsNotifyContent();
-            var actual = senderObj.SendEmail(email, content);
+            var emails = userObj.GetSubscribedUserEmails();
+            var content = newsObj.GetNewsContent();
+            var actual = senderObj.SendEmail(emails, content);
 
             // then assert
-            Assert.AreEqual(_expected.Content, actual.Content);
-            Assert.AreEqual(_expected.Email, actual.Email);
+            StringAssert.Contains(_expected.Content, actual.Content);
+            Assert.AreEqual(_expected.Emails, actual.Emails);
             Assert.AreEqual(_expected, actual);
         }
     }

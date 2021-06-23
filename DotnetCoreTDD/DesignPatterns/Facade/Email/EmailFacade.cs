@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DotnetCoreTDD.DesignPatterns.Facade.Email.SubSystem;
 
 namespace DotnetCoreTDD.DesignPatterns.Facade.Email
@@ -16,10 +17,10 @@ namespace DotnetCoreTDD.DesignPatterns.Facade.Email
             _news = new News();
         }
 
-        public EmailModel SendNewsNotifyEmail(string account)
+        public EmailModel SendNewsNotifyEmail()
         {
-            var email = _user.GetUserEmail(account);
-            var content = _news.GetNewsNotifyContent();
+            var email = _user.GetSubscribedUserEmails();
+            var content = _news.GetNewsContent();
             return _emailSender.SendEmail(email, content);
         }
     }
@@ -29,7 +30,7 @@ namespace DotnetCoreTDD.DesignPatterns.Facade.Email
     /// </summary>
     public class EmailModel : IEquatable<EmailModel>
     {
-        public string Email { get; set; }
+        public List<string> Emails { get; set; }
         public string Content { get; set; }
 
         public override bool Equals(object obj)
@@ -45,7 +46,7 @@ namespace DotnetCoreTDD.DesignPatterns.Facade.Email
 
         public bool Equals(EmailModel obj)
         {
-            return Email == obj.Email && Content == obj.Content;
+            return Emails == obj.Emails && Content == obj.Content;
         }
     }
 }

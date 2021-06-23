@@ -5,7 +5,7 @@
     /// </summary>
     public class News
     {
-        public string GetNewsNotifyContent()
+        public string GetNewsContent()
         {
             return "最新消息通知";
         }

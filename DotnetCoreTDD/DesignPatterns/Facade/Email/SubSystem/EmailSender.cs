@@ -1,4 +1,5 @@
-﻿using DotnetCoreTDD.DesignPatterns.Facade.Email;
+﻿using System.Collections.Generic;
+using DotnetCoreTDD.DesignPatterns.Facade.Email;
 
 namespace DotnetCoreTDD.DesignPatterns.Facade.Email.SubSystem
 {
@@ -7,11 +8,11 @@ namespace DotnetCoreTDD.DesignPatterns.Facade.Email.SubSystem
     /// </summary>
     public class EmailSender
     {
-        public EmailModel SendEmail(string email, string content)
+        public EmailModel SendEmail(List<string> emails, string content)
         {
             return new EmailModel
             {
-                Email = email,
+                Emails = emails,
                 Content = content,
             };
         }

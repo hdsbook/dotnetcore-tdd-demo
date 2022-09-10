@@ -8,7 +8,6 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
     [TestFixture()]
     public class EmailFacadeTests
     {
-        private string _account;
         private EmailModel _expected;
 
         [SetUp()]
@@ -33,7 +32,6 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
             // then assert
             StringAssert.Contains(_expected.Content, actual.Content);
             Assert.AreEqual(_expected.Emails, actual.Emails);
-            Assert.AreEqual(_expected, actual);
         }
 
         [Test()]
@@ -52,7 +50,6 @@ namespace DotnetCoreTDDTests.DesignPatterns.Facade
             // then assert
             StringAssert.Contains(_expected.Content, actual.Content);
             Assert.AreEqual(_expected.Emails, actual.Emails);
-            Assert.AreEqual(_expected, actual);
         }
     }
 }

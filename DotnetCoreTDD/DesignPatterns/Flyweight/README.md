@@ -24,11 +24,9 @@
 
 
 ## 結論
-- 情境：當有一多型物件需要生產時，可以用工廠方法模式
-- 建議：個人認為實務上還是要斟酌選用簡單工廠或工廠方法
-  - 如果物件的建立是很單純的，自己個人會覺得有時候簡單工廠還是比較方便
+- 情境：當有一物件被取用多次，為了避免實體化相似的物件而造成記憶體浪費時可以使用
 
 ## 其它參考資料
 
-- [我的Notion筆記](https://iced-droplet-883.notion.site/Factory-Method-b42504e252784b5ab21cfe92d3984eb0)
+- [我的Notion筆記](https://iced-droplet-883.notion.site/Flyweight-aa5812fc88504247b74b67f912fbfe67)
 - 參考書籍 ([秒懂設計模式](https://www.books.com.tw/products/0010910659))

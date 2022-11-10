@@ -4,17 +4,19 @@ using System.Linq;
 
 namespace DotnetCoreTDD.DesignPatterns.Decorator.ShoppingCart
 {
+    /// <summary>
+    /// 購物車介面
+    /// </summary>
     public interface ICart
     {
         void AddProduct(Product product);
         
-        /// <summary>
-        /// 結算金額
-        /// </summary>
-        /// <returns></returns>
         public int CalculatePrice();
     }
 
+    /// <summary>
+    /// 購物車類別
+    /// </summary>
     public class ShoppingCart: ICart
     {
         private List<Product> Products { get; set; }
@@ -35,6 +37,9 @@ namespace DotnetCoreTDD.DesignPatterns.Decorator.ShoppingCart
         }
     }
 
+    /// <summary>
+    /// 商品類別
+    /// </summary>
     public class Product
     {
         public string Name { get; set; }
@@ -45,13 +50,16 @@ namespace DotnetCoreTDD.DesignPatterns.Decorator.ShoppingCart
 
     #region Decorators
 
+    /// <summary>
+    /// 抽象裝飾器類別
+    /// </summary>
     public abstract class ShoppingCartDecorator: ICart
     {
         protected ICart ShoppingCart { get; set; }
 
         protected ShoppingCartDecorator(ICart shoppingCart)
         {
-            ShoppingCart = shoppingCart;
+            ShoppingCart = shoppingCart; // 將被裝飾者做為私有成員
         }
 
         public void AddProduct(Product product)

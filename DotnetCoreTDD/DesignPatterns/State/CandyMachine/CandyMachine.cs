@@ -25,9 +25,10 @@ namespace DotnetCoreTDD.DesignPatterns.State.CandyMachine
         public CandyMachine(int candyCount)
         {
             _candyCount = candyCount;
-            _state = candyCount > 0
-                ? (MachineState) new NoCoinState() // 糖果數量大於零，預設狀態為無硬幣
-                : (MachineState) new SoldOutState(); // 糖果數量為零，狀態為已賣完
+            if (candyCount > 0)
+                TurnIntoState(new NoCoinState());
+            else
+                TurnIntoState(new SoldOutState());
         }
 
         public int GetCandyCount()

@@ -7,6 +7,9 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
         public string Load();
     }
 
+    /// <summary>
+    /// 抽象圖片Loader
+    /// </summary>
     public abstract class AbstractImageLoader : IImageLoader
     {
         private AbstractImageLoader NextLoader { get; set; }
@@ -25,32 +28,37 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
         }
     }
 
-
+    /// <summary>
+    /// 圖片Loader (from memory)
+    /// </summary>
     public class MemoryImageLoader : AbstractImageLoader
     {
         public override string Load()
         {
-            return CheckHasCache()
+            return HasImageCache()
                 ? "image from memory cache"
                 : base.Load();
         }
 
-        public virtual bool CheckHasCache()
+        public virtual bool HasImageCache()
         {
             return true;
         }
     }
 
+    /// <summary>
+    /// 圖片Loader (from disk)
+    /// </summary>
     public class DiskImageLoader : AbstractImageLoader
     {
         public override string Load()
         {
-            return CheckHasCache()
+            return HasImageCache()
                 ? "image from disk"
                 : base.Load();
         }
 
-        public virtual bool CheckHasCache()
+        public virtual bool HasImageCache()
         {
             return true;
         }

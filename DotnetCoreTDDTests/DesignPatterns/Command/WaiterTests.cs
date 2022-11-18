@@ -52,7 +52,8 @@ namespace DotnetCoreTDDTests.DesignPatterns.Command
             var executeHistory = new List<string>();
             foreach (var order in orders)
             {
-                executeHistory.AddRange(waiter.GetOrder(order));
+                var result = waiter.GetOrder(order);
+                executeHistory.AddRange(result);
             }
 
 

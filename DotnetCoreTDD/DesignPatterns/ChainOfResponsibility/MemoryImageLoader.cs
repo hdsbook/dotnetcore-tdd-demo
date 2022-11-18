@@ -1,30 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
 {
-    public interface IImageLoader
-    {
-        public string Load();
-    }
-
     /// <summary>
     /// 抽象圖片Loader
     /// </summary>
-    public abstract class AbstractImageLoader : IImageLoader
+    public abstract class AbstractImageLoader
     {
         private AbstractImageLoader NextLoader { get; set; }
 
+        /// <summary>
+        /// 設定下一關
+        /// </summary>
+        /// <param name="nextLoader"></param>
+        /// <returns></returns>
         public AbstractImageLoader SetNext(AbstractImageLoader nextLoader)
         {
             NextLoader = nextLoader;
             return NextLoader;
         }
 
-        public virtual string Load()
+        /// <summary>
+        /// 顯示圖片
+        /// </summary>
+        /// <param name="imageUrl"></param>
+        /// <returns></returns>
+        public virtual string Display(string imageUrl)
         {
             return NextLoader == null
                 ? null
-                : NextLoader.Load();
+                : NextLoader.Display(imageUrl);
         }
     }
 
@@ -33,16 +39,33 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
     /// </summary>
     public class MemoryImageLoader : AbstractImageLoader
     {
-        public override string Load()
+        protected Dictionary<string, string> Cache = new Dictionary<string, string>();
+
+        public override string Display(string imageUrl)
         {
-            return HasImageCache()
-                ? "image from memory cache"
-                : base.Load();
+            if (CheckHasCache(imageUrl))
+            {
+                return Cache[imageUrl];
+            }
+            else
+            {
+                var image = base.Display(imageUrl);
+                if (image != null)
+                {
+                    PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
+                }
+                return image;
+            }
         }
 
-        public virtual bool HasImageCache()
+        public bool CheckHasCache(string imageUrl)
         {
-            return true;
+            return Cache.ContainsKey(imageUrl);
+        }
+
+        public void PutCache(string imageUrl)
+        {
+            Cache[imageUrl] = "image from memory";
         }
     }
 
@@ -51,16 +74,33 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
     /// </summary>
     public class DiskImageLoader : AbstractImageLoader
     {
-        public override string Load()
+        protected Dictionary<string, string> Cache = new Dictionary<string, string>();
+
+        public override string Display(string imageUrl)
         {
-            return HasImageCache()
-                ? "image from disk"
-                : base.Load();
+            if (CheckHasCache(imageUrl))
+            {
+                return Cache[imageUrl];
+            }
+            else
+            {
+                var image = base.Display(imageUrl);
+                if (image != null)
+                {
+                    PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
+                }
+                return image;
+            }
         }
 
-        public virtual bool HasImageCache()
+        public bool CheckHasCache(string imageUrl)
         {
-            return true;
+            return Cache.ContainsKey(imageUrl);
+        }
+
+        public void PutCache(string imageUrl)
+        {
+            Cache[imageUrl] = "image from disk";
         }
     }
 }

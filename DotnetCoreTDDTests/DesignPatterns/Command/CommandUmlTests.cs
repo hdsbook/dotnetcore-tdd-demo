@@ -9,7 +9,7 @@ namespace DotnetCoreTDDTests.DesignPatterns.Command
     public class CommandUmlTests
     {
         [Test]
-        public void GivenInvoker_SetHooksWithCommands_WorksCorrectlyD()
+        public void GivenInvoker_SetHooksWithCommands_WorksCorrectly()
         {
             // given invoker
             var invoker = new CommandUml.Invoker();

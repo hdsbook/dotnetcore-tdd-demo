@@ -26,11 +26,11 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
         /// </summary>
         /// <param name="imageUrl"></param>
         /// <returns></returns>
-        public virtual string Display(string imageUrl)
+        public virtual string Load(string imageUrl)
         {
             return NextLoader == null
                 ? null
-                : NextLoader.Display(imageUrl);
+                : NextLoader.Load(imageUrl);
         }
     }
 
@@ -41,21 +41,19 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
     {
         protected Dictionary<string, string> Cache = new Dictionary<string, string>();
 
-        public override string Display(string imageUrl)
+        public override string Load(string imageUrl)
         {
+            string picture = null;
             if (CheckHasCache(imageUrl))
             {
-                return Cache[imageUrl];
+                picture = Cache[imageUrl];
             }
             else
             {
-                var image = base.Display(imageUrl);
-                if (image != null)
-                {
-                    PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
-                }
-                return image;
+                picture = base.Load(imageUrl);
+                if (picture != null) PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
             }
+            return picture;
         }
 
         public bool CheckHasCache(string imageUrl)
@@ -76,21 +74,19 @@ namespace DotnetCoreTDD.DesignPatterns.ChainOfResponsibility
     {
         protected Dictionary<string, string> Cache = new Dictionary<string, string>();
 
-        public override string Display(string imageUrl)
+        public override string Load(string imageUrl)
         {
+            string image;
             if (CheckHasCache(imageUrl))
             {
-                return Cache[imageUrl];
+                image = Cache[imageUrl];
             }
             else
             {
-                var image = base.Display(imageUrl);
-                if (image != null)
-                {
-                    PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
-                }
-                return image;
+                image = base.Load(imageUrl);
+                if (image != null) PutCache(imageUrl); // 若於下一層有取到快取，在此層也存入快取
             }
+            return image;
         }
 
         public bool CheckHasCache(string imageUrl)

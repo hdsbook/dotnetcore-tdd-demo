@@ -9,6 +9,7 @@
     <Folder Include="DesignPatterns\Bridge\Report\" />
     <Folder Include="DesignPatterns\Bridge\Report\Implementors\" />
     <Folder Include="DesignPatterns\Bridge\Report\Abstractions\" />
+    <Folder Include="DesignPatterns\Command\KeymapExample" />
     <Folder Include="DesignPatterns\Facade\" />
     <Folder Include="DesignPatterns\Facade\Email\" />
     <Folder Include="DesignPatterns\Facade\Email\SubSystem\" />

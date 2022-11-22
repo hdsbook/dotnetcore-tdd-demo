@@ -21,7 +21,7 @@ namespace DotnetCoreTDDTests.DesignPatterns.ChainOfResponsibility
             memory.SetNext(disk);
 
             // when load image
-            var image = memory.Display(imageUrl);
+            var image = memory.Load(imageUrl);
 
             // then
             image.Should().BeNull();
@@ -44,7 +44,7 @@ namespace DotnetCoreTDDTests.DesignPatterns.ChainOfResponsibility
             memory.SetNext(disk);
 
             // when load image
-            var image = memory.Display(imageUrl);
+            var image = memory.Load(imageUrl);
 
             // then
             image.Should().Be("image from memory");
@@ -67,13 +67,13 @@ namespace DotnetCoreTDDTests.DesignPatterns.ChainOfResponsibility
             memory.SetNext(disk);
 
             // when load image
-            var image = memory.Display(imageUrl);
+            var image = memory.Load(imageUrl);
 
             // then 預期圖片在disk
             image.Should().Be("image from disk");
 
             // when 再次顯示圖片
-            var imageAgain = memory.Display(imageUrl);
+            var imageAgain = memory.Load(imageUrl);
 
             // then 第二次應該從記憶體取得
             imageAgain.Should().Be("image from memory");
